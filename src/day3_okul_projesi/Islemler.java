@@ -1,6 +1,7 @@
 package day3_okul_projesi;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -96,7 +97,7 @@ public class Islemler {
                 islemMenusu();
 
             }
-        }else{
+        }else {
 
 
         }
@@ -106,19 +107,22 @@ public class Islemler {
         System.out.println("lutfen aratmak istediginiz ismi giriniz");
         String word = scan.next().toUpperCase();
         if(kisiTuru=="OGRENCI"){
-            ogrenciListesi.stream().filter(t -> t.getAdSoyad().toUpperCase().contains(word)).forEach(System.out::println);
+          //  if(word==ogrenciListesi.stream().sorted(Comparator.comparing()).filter(t -> t.getAdSoyad().toUpperCase()); {
+                ogrenciListesi.stream().filter(t -> t.getAdSoyad().toUpperCase().contains(word)).forEach(System.out::println);
 
-        }else{
+                System.out.println( word +" isminde ogrenci bulunamadi...");
+
+        }
             ogretmenListesi.stream().filter(t -> t.getAdSoyad().toUpperCase().contains(word)).forEach(System.out::println);
         }
-    }
+
 
     private void listele() {
        // ogrenciListesi.stream().forEach(System.out::println);
         if(kisiTuru=="OGRENCI") {
             ogrenciListesi.stream().forEach(System.out::println);
 
-        } else{ogretmenListesi.stream().forEach(System.out::println);
+        } else {ogretmenListesi.stream().forEach(System.out::println);
 
             }
         islemMenusu();
@@ -146,7 +150,11 @@ public class Islemler {
             System.out.println("Sınıf giriniz:");
             String sinif = scan.next();
             Ogrenci ogrenci = new Ogrenci(adSoyad,kimlikNo,yas,numara,sinif);
+
             ogrenciListesi.add(ogrenci);
+
+            System.out.println("BASARIYLA KAYDEDILDI");
+
         }else {
             System.out.println("Sicil No giriniz:");
             String sicilNo = scan.next();
